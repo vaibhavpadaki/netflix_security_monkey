@@ -1,0 +1,15 @@
+# Docker for SecurityMonkey
+# Author : Nag
+FROM ubuntu:14.04
+MAINTAINER Nag <nagwww@gmail.com>
+
+#For postgres installations
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8 &&\
+    echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc/apt/sources.list.d/pgdg.list &&\
+    apt-get update -y &&\
+#    apt-get -y -q install python-software-properties software-properties-common postgresql-9.3 postgresql-client-9.3 postgresql-contrib-9.3 &&\
+#    apt-get -y -q install python-software-properties software-properties-common postgresql postgresql-client-9.3 postgresql-contrib &&\
+#    apt-get install -y python-pip python-dev python-psycopg2 libpq-dev nginx supervisor git curl
+    apt-get -y install python-pip python-dev python-psycopg2 postgresql postgresql-contrib libpq-dev nginx supervisor git  curl apt-transport-https gcc python-virtualenv  &&\
+    pip install --upgrade setuptools &&\
+    apt-get -y -q install libffi-dev libssl-dev gcc python-virtualenv
